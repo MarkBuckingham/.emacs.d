@@ -80,13 +80,16 @@
 (ido-vertical-mode 1)
 (setq ido-vertical-define-keys 'C-n-C-p-up-down)
 
+system-type
+
 ;; special (non-minor-mode) keybindings
 (if (eq system-type 'darwin)
     (progn
-      (nil)
+      (message "running on darwin")
       )
   (progn
     ;; darwin compatible "Super" key bindings
+    (message "not running on darwin")
     (global-set-key (kbd "s-&") 'kill-this-buffer)
     (global-set-key (kbd "s-'") 'next-multiframe-window)
     (global-set-key (kbd "s-,") 'customize)

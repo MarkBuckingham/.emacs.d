@@ -75,6 +75,8 @@
     nlinum
     osx-clipboard
     ps-ccrypt
+    emacs-eclim
+    ido-vertical-mode
     ))
 
 ;; On OS X, an Emacs instance started from the graphical user
