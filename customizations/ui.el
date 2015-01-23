@@ -3,7 +3,7 @@
 ;; commented out, and begin with the line "CUSTOMIZE". These are more
 ;; a matter of preference and may require some fiddling to match your
 ;; preferences
-
+(message "in customizations/ui.el")
 ;; I like the menu bar and the mouse
 (menu-bar-mode t)
 (xterm-mouse-mode t)
@@ -30,7 +30,7 @@
 (load-theme 'tomorrow-night-bright t)
 
 ;; increase font size for better readability
-(set-face-attribute 'default nil :height 140)
+;;(set-face-attribute 'default nil :height 140)
 
 ;; Uncomment the lines below by removing semicolons and play with the
 ;; values in order to set the width (in characters wide) and height
