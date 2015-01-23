@@ -24,13 +24,6 @@
 
                    ;; subtract 5 cols / rows off of computed value to add room for window chrome
                    (let (
-                         ;(cols (min 132 (- (/ my-pixel-width (frame-char-width (selected-frame))))))
-                         ;(rows (min 50 (- (/ my-pixel-height (frame-char-height (selected-frame))))))
-                         ;(cols (- (/ my-pixel-width (frame-char-width (selected-frame)))))
-                         ;(rows (- (/ my-pixel-height (frame-char-height (selected-frame)))))
-                         
-                         ;(cols (- (/ my-pixel-width (frame-char-width (selected-frame))) 5))
-                         ;(rows (- (/ my-pixel-height (frame-char-height (selected-frame))) 5))
                          (cols 
                           (min 132 
                                (/ my-pixel-width (frame-char-width (selected-frame))))
@@ -67,6 +60,7 @@
           )
 
 ;; eclim stuff
+;; note that there are a bunch of eclim key shortcuts already defined
 (setq eclim-executable "~/eclipse/eclim")
 (global-set-key (kbd "C-S-r") 'eclim-file-locate)
 (require 'company)
@@ -80,7 +74,35 @@
 (ido-vertical-mode 1)
 (setq ido-vertical-define-keys 'C-n-C-p-up-down)
 
-system-type
+;; super+9 jump to matching paren or brace
+(defun goto-match-paren (arg)
+  "Go to the matching parenthesis if on parenthesis, otherwise insert %.
+vi style of % jumping to matching brace."
+  (interactive "p")
+  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
+        ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
+        ((looking-at "\\s{") (forward-char 1) (backward-list 1))
+        ((looking-at "\\s}") (forward-char 1) (backward-list 1))
+        (t (self-insert-command (or arg 1))))
+  )
+
+;; make emacs save backup files in /tmp
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
+;; purge old backup files
+(message "Deleting old backup files...")
+(let ((week (* 60 60 24 7))
+      (current (float-time (current-time))))
+  (dolist (file (directory-files temporary-file-directory t))
+    (when (and (backup-file-name-p file)
+               (> (- current (float-time (fifth (file-attributes file))))
+                  week))
+      (message "%s" file)
+      (delete-file file)))
+  )
 
 ;; special (non-minor-mode) keybindings
 (if (eq system-type 'darwin)
@@ -106,7 +128,7 @@ system-type
     (global-set-key (kbd "s-c") 'kill-ring-save)
     (global-set-key (kbd "s-d") 'isearch-repeat-backward)
     (global-set-key (kbd "s-e") 'isearch-yank-kill)
-    (global-set-key (kbd "s-f") 'isearch-forward)
+    (global-set-key (kbd "s-f") 'isearch-forward-regexp)
     (global-set-key (kbd "s-g") 'isearch-repeat-forward)
     (global-set-key (kbd "s-j") 'exchange-point-and-mark)
     (global-set-key (kbd "s-k") 'kill-this-buffer)
@@ -129,7 +151,8 @@ system-type
 (global-set-key (kbd "<s-prior>") 'previous-multiframe-window) ; Super-pgUp
 (global-set-key (kbd "<M-next>") 'next-buffer) ; Alt-pgDn
 (global-set-key (kbd "<M-prior>") 'previous-buffer) ; Alt-pgUp 
-
-
+(global-set-key (kbd "<home>") 'move-beginning-of-line)
+(global-set-key (kbd "<end>") 'move-end-of-line)
+(global-set-key (kbd "s-9") 'goto-match-paren)  ; super + 9 ['(' is a shift+9]
 
 (message "mark.el end")
