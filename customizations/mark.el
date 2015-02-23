@@ -57,6 +57,16 @@
   (set-face-attribute 'default nil :height my-face-height)
   (marks-center-screen nil))
 
+;; <s-f1> - dark color theme
+(defun marks-dark-theme (arg)
+  (interactive "p")
+  (color-theme-tomorrow-night-bright))
+
+;; <s-f2> - light color theme
+(defun marks-light-theme (arg)
+  (interactive "p")
+  (color-theme-gnome2))
+
 ;; super+9 jump to matching paren or brace
 (defun goto-match-paren (arg)
   "Go to the matching parenthesis if on parenthesis, otherwise insert %.
@@ -170,6 +180,8 @@ vi style of % jumping to matching brace."
     (global-set-key (kbd "s-9") 'goto-match-paren)  ; super + 9 ['(' is a shift+9]
     (global-set-key (kbd "<s-kp-subtract>") 'marks-make-font-smaller) ; super + keypad '-'
     (global-set-key (kbd "<s-kp-add>") 'marks-make-font-larger) ; super + keypad '+'
+    (global-set-key (kbd "<s-f1>") 'marks-dark-theme) ; super + f1
+    (global-set-key (kbd "<s-f2>") 'marks-light-theme) ; super + f2
     )
  )
 
