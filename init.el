@@ -144,8 +144,13 @@
 (load "mark.el")
 
 ;; for ruby on rails
-(setq load-path (cons (expand-file-name "~/.emacs.d/emacs-rails-reloaded") load-path))
-(require 'rails-autoload)
+(if
+    (file-accessible-directory-p "~/.emacs.d/emacs-rails-reloaded")
+    (progn
+      (setq load-path (cons (expand-file-name "~/.emacs.d/emacs-rails-reloaded") load-path))
+      (require 'rails-autoload)
+      )
+)
 
 ;; (let (
 ;;       (filename (concat user-real-login-name ".el")))
