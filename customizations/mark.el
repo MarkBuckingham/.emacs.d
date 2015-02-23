@@ -115,6 +115,9 @@ vi style of % jumping to matching brace."
           (delete-file file)))
       )
 
+    ;; columns
+    (column-number-mode 1)
+
     ;; special (non-minor-mode) keybindings
     (if (eq system-type 'darwin)
         (progn
@@ -169,4 +172,9 @@ vi style of % jumping to matching brace."
     (global-set-key (kbd "<s-kp-add>") 'marks-make-font-larger) ; super + keypad '+'
     )
  )
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (set-fill-column 80)))
+
 (message "mark.el end")

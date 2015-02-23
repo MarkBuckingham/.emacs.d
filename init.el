@@ -142,6 +142,11 @@
 (load "setup-clojure.el")
 (load "setup-js.el")
 (load "mark.el")
+
+;; for ruby on rails
+(setq load-path (cons (expand-file-name "~/.emacs.d/emacs-rails-reloaded") load-path))
+(require 'rails-autoload)
+
 ;; (let (
 ;;       (filename (concat user-real-login-name ".el")))
 ;;   (if (file-exists-p filename)
