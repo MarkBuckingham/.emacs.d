@@ -187,6 +187,8 @@ vi style of % jumping to matching brace."
 
 (add-hook 'org-mode-hook
           (lambda ()
-            (set-fill-column 80)))
+            (set-fill-column 80)
+            (auto-fill-mode t)
+            ))
 
 (message "mark.el end")
