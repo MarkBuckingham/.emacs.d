@@ -180,6 +180,8 @@ vi style of % jumping to matching brace."
     (global-set-key (kbd "s-9") 'goto-match-paren)  ; super + 9 ['(' is a shift+9]
     (global-set-key (kbd "<s-kp-subtract>") 'marks-make-font-smaller) ; super + keypad '-'
     (global-set-key (kbd "<s-kp-add>") 'marks-make-font-larger) ; super + keypad '+'
+    (global-set-key (kbd "s-=")  'marks-make-font-smaller) ; super + '='
+    (global-set-key (kbd "s-+") 'marks-make-font-larger) ; super + '+'
     (global-set-key (kbd "<s-f1>") 'marks-dark-theme) ; super + f1
     (global-set-key (kbd "<s-f2>") 'marks-light-theme) ; super + f2
     )
@@ -192,5 +194,16 @@ vi style of % jumping to matching brace."
             (set-fill-column 80)
             (auto-fill-mode t)
             ))
+
+;; cedet / malabar mode
+
+;(setq cedet-java-jdk-root "/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home")
+; (load-file "/Users/mark/.emacs.d/elpa/cedet/cedet-devel-load.el")
+;    (add-hook 'after-init-hook (lambda ()
+;                 (message "activate-malabar-mode")
+;                 (activate-malabar-mode)))
+;
+;    (add-hook 'malabar-java-mode-hook 'flycheck-mode)
+;    (add-hook 'malabar-groovy-mode-hook 'flycheck-mode)
 
 (message "mark.el end")
