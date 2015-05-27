@@ -167,6 +167,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(coffee-tab-width 2)
+ '(global-eclim-mode t)
+ '(menu-bar-mode nil)
+ '(package-selected-packages
+   (quote
+    (tabbar rings tagedit sr-speedbar smex rainbow-delimiters ps-ccrypt projectile paredit osx-clipboard nlinum multi-web-mode markdown-mode+ magit javap-mode ido-vertical-mode ido-ubiquitous groovy-mode fringe-helper flycheck exec-path-from-shell enh-ruby-mode emacs-eclim eieio company color-theme-solarized clojure-mode-extra-font-locking cider auto-complete)))
  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
