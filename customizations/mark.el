@@ -85,21 +85,37 @@ vi style of % jumping to matching brace."
 (add-hook 
  'after-init-hook
  `(lambda ()
+	(message "before marks-center-screen")
     (marks-center-screen nil)
+	(message "after marks-center-screen")
 
     (if window-system
         (xterm-mouse-mode 0)
       (xterm-mouse-mode 1)
       )
+
+    ;; tabbar configuration
+
+    (defun my-tabbar-buffer-groups () ;; customize to show all normal files in one group
+      "Returns the name of the tab group names the current buffer belongs to.
+       There are two groups: Emacs buffers (those whose name starts with '*', plus
+       dired buffers), and the rest.  This works at least with Emacs v24.2 using
+       tabbar.el v1.7."
+      (list (cond ((string-equal "*" (substring (buffer-name) 0 1)) "emacs")
+                  ((eq major-mode 'dired-mode) "emacs")
+                  (t "user"))))
+    (setq tabbar-buffer-groups-function 'my-tabbar-buffer-groups)
     
     ;; eclim stuff
     ;; note that there are a bunch of eclim key shortcuts already defined
+	(message "eclim config start")
     (setq eclim-executable "~/eclipse/eclim")
     (global-set-key (kbd "C-S-r") 'eclim-file-locate)
     (require 'company)
     (require 'company-emacs-eclim)
     (company-emacs-eclim-setup)
     (global-company-mode t)
+	(message "eclim config end")
 
     ;; may want to move this to a different file
     (require 'ido-vertical-mode)
@@ -194,17 +210,6 @@ vi style of % jumping to matching brace."
             (set-fill-column 100)
             (auto-fill-mode t)
             ))
-
-;; cedet / malabar mode
-
-;; (setq cedet-java-jdk-root "/Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home")
-;;  (load-file "/Users/mark/.emacs.d/elpa/cedet/cedet-devel-load.el")
-;;     (add-hook 'after-init-hook (lambda ()
-;;                  (message "activate-malabar-mode")
-;;                  (activate-malabar-mode)))
-
-;;     (add-hook 'malabar-java-mode-hook 'flycheck-mode)
-;;     (add-hook 'malabar-groovy-mode-hook 'flycheck-mode)
 
 (menu-bar-mode t)
 

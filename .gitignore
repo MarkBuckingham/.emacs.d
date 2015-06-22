@@ -10,4 +10,5 @@ ido.last
 places
 emacs-rails-reloaded
 .cask
-
+semanticdb
+srecode-map.el
