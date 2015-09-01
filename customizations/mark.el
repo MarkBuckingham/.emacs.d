@@ -60,12 +60,12 @@
 ;; <s-f1> - dark color theme
 (defun marks-dark-theme (arg)
   (interactive "p")
-  (color-theme-tomorrow-night-bright))
+  (color-theme-tomorrow-night))
 
 ;; <s-f2> - light color theme
 (defun marks-light-theme (arg)
   (interactive "p")
-  (color-theme-gnome2))
+  (color-theme-tomorrow-daytime))
 
 ;; super+9 jump to matching paren or brace
 (defun goto-match-paren (arg)
@@ -90,7 +90,10 @@ vi style of % jumping to matching brace."
 	(message "after marks-center-screen")
 
     (if window-system
-        (xterm-mouse-mode 0)
+        (progn 
+          (xterm-mouse-mode 0)
+          (scroll-bar-mode 1)
+        )
       (xterm-mouse-mode 1)
       )
 
@@ -200,6 +203,11 @@ vi style of % jumping to matching brace."
     (global-set-key (kbd "s-+") 'marks-make-font-larger) ; super + '+'
     (global-set-key (kbd "<s-f1>") 'marks-dark-theme) ; super + f1
     (global-set-key (kbd "<s-f2>") 'marks-light-theme) ; super + f2
+    (global-set-key (kbd "<C-next>") 'next-buffer) ; ctrl + pgDn
+    (global-set-key (kbd "<C-prior>") 'previous-buffer) ; ctrl + pgUp
+    (global-set-key (kbd "<C-M-next>") 'tabbar-forward-tab) ; ctrl + alt + pgDn
+    (global-set-key (kbd "<C-M-prior>") 'tabbar-backward-tab) ; ctrl + alt + pgUp
+   
     )
  )
 
@@ -212,5 +220,6 @@ vi style of % jumping to matching brace."
             ))
 
 (menu-bar-mode t)
+(tabbar-mode t)
 
 (message "mark.el end")

@@ -166,9 +166,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default bold shadow italic underline bold bold-italic bold])
+ '(ansi-color-names-vector
+   [zenburn-bg zenburn-red zenburn-green zenburn-yellow zenburn-blue zenburn-magenta zenburn-cyan zenburn-fg])
  '(coffee-tab-width 2)
+ '(custom-safe-themes
+   (quote
+    ("cf08ae4c26cacce2eebff39d129ea0a21c9d7bf70ea9b945588c1c66392578d1" "1157a4055504672be1df1232bed784ba575c60ab44d8e6c7b3800ae76b42f8bd" "9e54a6ac0051987b4296e9276eecc5dfb67fdcd620191ee553f40a9b6d943e78" "7f1263c969f04a8e58f9441f4ba4d7fb1302243355cb9faecb55aec878a06ee9" default)))
+ '(fci-rule-color "#00346e")
  '(global-eclim-mode t)
- '(menu-bar-mode nil)
+ '(jira-url "https://jira.courtview.com/rpc/xmlrpc")
  '(package-selected-packages
    (quote
     (tabbar rings tagedit sr-speedbar smex rainbow-delimiters ps-ccrypt projectile paredit osx-clipboard nlinum multi-web-mode markdown-mode+ magit javap-mode ido-vertical-mode ido-ubiquitous groovy-mode fringe-helper flycheck exec-path-from-shell enh-ruby-mode emacs-eclim eieio company color-theme-solarized clojure-mode-extra-font-locking cider auto-complete)))
@@ -179,3 +187,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'downcase-region 'disabled nil)
