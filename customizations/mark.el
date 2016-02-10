@@ -112,7 +112,7 @@ vi style of % jumping to matching brace."
     ;; eclim stuff
     ;; note that there are a bunch of eclim key shortcuts already defined
 	(message "eclim config start")
-    (setq eclim-executable "~/eclipse/eclim")
+    (setq eclim-executable "~/Applications/Eclipse.app/Contents/Eclipse/eclim")
     (global-set-key (kbd "C-S-r") 'eclim-file-locate)
     (require 'company)
     (require 'company-emacs-eclim)
@@ -194,6 +194,8 @@ vi style of % jumping to matching brace."
     (global-set-key (kbd "<s-prior>") 'previous-multiframe-window) ; Super-pgUp
     (global-set-key (kbd "<M-next>") 'next-buffer) ; Alt-pgDn
     (global-set-key (kbd "<M-prior>") 'previous-buffer) ; Alt-pgUp 
+    (global-set-key (kbd "<s-right>") 'next-buffer)
+    (global-set-key (kbd "<s-left>") 'previous-buffer)
     (global-set-key (kbd "<home>") 'move-beginning-of-line)
     (global-set-key (kbd "<end>") 'move-end-of-line)
     (global-set-key (kbd "s-9") 'goto-match-paren)  ; super + 9 ['(' is a shift+9]
