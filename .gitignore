@@ -12,3 +12,5 @@ emacs-rails-reloaded
 .cask
 semanticdb
 srecode-map.el
+session.*
+%backup%*
