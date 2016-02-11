@@ -31,53 +31,39 @@
 ;; manually with M-x package-install
 ;; Add in your own as you wish:
 (defvar my-packages
-  '(;; makes handling lisp expressions much, much easier
-    ;; Cheatsheet: http://www.emacswiki.org/emacs/PareditCheatsheet
-    paredit
-
-    ;; key bindings and code colorization for Clojure
-    ;; https://github.com/clojure-emacs/clojure-mode
-    clojure-mode
-
-    ;; extra syntax highlighting for clojure
-    clojure-mode-extra-font-locking
-
-    ;; integration with a Clojure REPL
-    ;; https://github.com/clojure-emacs/cider
+  '(
+    auto-complete
     cider
-
-    ;; allow ido usage in as many contexts as possible. see
-    ;; customizations/better-defaults.el line 47 for a description
-    ;; of ido
-    ido-ubiquitous
-
-    ;; Enhances M-x to allow easier execution of commands. Provides
-    ;; a filterable list of possible commands in the minibuffer
-    ;; http://www.emacswiki.org/emacs/Smex
-    smex
-
-    ;; project navigation
-    projectile
-
-    ;; colorful parenthesis matching
-    rainbow-delimiters
-
-    ;; edit html tags like sexps
-    tagedit
-
-    ;; git integration
-    magit
-
-    company
+    clojure-mode
+    clojure-mode-extra-font-locking
     color-theme
+    color-theme-solarized
+    company
+    eieio
+    emacs-eclim
     enh-ruby-mode
+    exec-path-from-shell
+    flycheck
+    fringe-helper
+    groovy-mode
+    ido-ubiquitous
+    ido-vertical-mode
+    javap-mode
+    magit
+    markdown-mode+
     multi-web-mode
     nlinum
     osx-clipboard
+    paredit
+    projectile
     ps-ccrypt
-    emacs-eclim
-    ido-vertical-mode
-    ))
+    rainbow-delimiters
+    rings
+    smex
+    sr-speedbar
+    tabbar
+    tagedit
+))
 
 ;; On OS X, an Emacs instance started from the graphical user
 ;; interface will have a different environment than a shell in a
@@ -168,9 +154,6 @@
  '(fci-rule-color "#00346e")
  '(global-eclim-mode t)
  '(jira-url "https://jira.courtview.com/rpc/xmlrpc")
- '(package-selected-packages
-   (quote
-    (tabbar rings tagedit sr-speedbar smex rainbow-delimiters ps-ccrypt projectile paredit osx-clipboard nlinum multi-web-mode markdown-mode+ magit javap-mode ido-vertical-mode ido-ubiquitous groovy-mode fringe-helper flycheck exec-path-from-shell enh-ruby-mode emacs-eclim eieio company color-theme-solarized clojure-mode-extra-font-locking cider auto-complete)))
  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

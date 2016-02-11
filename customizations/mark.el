@@ -147,6 +147,9 @@ vi style of % jumping to matching brace."
     ;; columns
     (column-number-mode 1)
 
+    ;; rainbows
+    ;;(global-rainbow-delimiters-mode t)
+
     ;; special (non-minor-mode) keybindings
     (if (eq system-type 'darwin)
         (progn
@@ -220,6 +223,9 @@ vi style of % jumping to matching brace."
             (set-fill-column 100)
             (auto-fill-mode t)
             ))
+
+;; rainbows!
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (menu-bar-mode t)
 (tabbar-mode t)
