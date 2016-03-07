@@ -227,7 +227,12 @@ vi style of % jumping to matching brace."
 ;; rainbows!
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
+(add-hook 'sql-interactive-mode-hook
+          (lambda ()
+            (toggle-truncate-lines t)))
+
 (menu-bar-mode t)
 (tabbar-mode t)
+(cua-mode t)
 
 (message "mark.el end")
