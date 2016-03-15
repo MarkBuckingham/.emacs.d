@@ -60,12 +60,12 @@
 ;; <s-f1> - dark color theme
 (defun marks-dark-theme (arg)
   (interactive "p")
-  (color-theme-tomorrow-night))
+  (load-theme 'tango-dark))
 
 ;; <s-f2> - light color theme
 (defun marks-light-theme (arg)
   (interactive "p")
-  (color-theme-tomorrow-daytime))
+  (load-theme 'tango))
 
 ;; super+9 jump to matching paren or brace
 (defun goto-match-paren (arg)
@@ -213,6 +213,7 @@ vi style of % jumping to matching brace."
     (global-set-key (kbd "<C-M-next>") 'tabbar-forward-tab) ; ctrl + alt + pgDn
     (global-set-key (kbd "<C-M-prior>") 'tabbar-backward-tab) ; ctrl + alt + pgUp
    
+;;    (color-theme-gnome2)
     )
  )
 
