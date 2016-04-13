@@ -60,12 +60,23 @@
 ;; <s-f1> - dark color theme
 (defun marks-dark-theme (arg)
   (interactive "p")
+<<<<<<< HEAD
   (load-theme 'tango-dark))
 
 ;; <s-f2> - light color theme
 (defun marks-light-theme (arg)
   (interactive "p")
   (load-theme 'tango))
+=======
+   (load-theme 'tomorrow-night)
+   )
+
+;; <s-f2> - light color theme
+ (defun marks-light-theme (arg)
+   (interactive "p")
+   (load-theme 'tomorrow-daytime)
+   )
+>>>>>>> e464e63f6e401171d1ba26343fae7153b77dfe1c
 
 ;; super+9 jump to matching paren or brace
 (defun goto-match-paren (arg)
