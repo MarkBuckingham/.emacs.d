@@ -10,7 +10,7 @@
       (progn
 
         (if (not (boundp 'my-face-height))
-            (setq my-face-height 140)
+            (setq my-face-height 130)
           )        
 
         (set-face-attribute 'default nil :height my-face-height)
