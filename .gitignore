@@ -1,16 +1,8 @@
-%backup%*
-.cask
+tramp
 .recentf
 .smex-items
-ac-comphist.dat
-auto-save-list/
 backups/
-cider-history
 elpa/
-emacs-rails-reloaded
 ido.last
 places
 projectile-bookmarks.eld
-semanticdb
-session.*
-srecode-map.el
