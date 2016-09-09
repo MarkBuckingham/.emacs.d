@@ -4,16 +4,49 @@
 ;;; my functions
 ;;;;;;;;;;;;;;;;;
 
+;; set some sane defaults for fonts
+(defun marks-set-font-params (arg)
+  (interactive "p")
+  (setq my-font-family 
+        (cond ((eq system-type 'darwin) 
+               "Menlo")
+      
+              ((eq system-type 'windows-nt) 
+               "Consolas")
+              
+              ((eq system-type 'gnu/linux) 
+               "Ubuntu Mono")
+              )  
+        )
+
+  (setq my-font-foundry
+        (cond ((eq system-type 'darwin)
+               "nil")
+              ((eq system-type 'windows-nt)
+               "outline")
+              ((eq system-type 'gnu/linux)
+               "DAMA")
+              )
+        )
+
+  (setq my-face-height (face-attribute 'default :height))
+
+  (set-face-attribute 'default nil :height my-face-height)
+  (set-face-attribute 'default nil :family my-font-family)
+  (set-face-attribute 'default nil :foundry my-font-foundry)
+)
+
 ;; center screen
 (defun marks-center-screen (arg)
+  (interactive "p")
   (if (window-system)
       (progn
 
         (if (not (boundp 'my-face-height))
-            (setq my-face-height 130)
+            ;;(setq my-face-height (face-attribute 'default :height)) ;; was 130 
+            (marks-set-font-params nil)
           )        
 
-        (set-face-attribute 'default nil :height my-face-height)
 
         (setq my-pixel-width (nth 3 (assq 'geometry (car (display-monitor-attributes-list)))))
         (setq my-pixel-height (nth 4 (assq 'geometry (car (display-monitor-attributes-list)))))
@@ -43,29 +76,46 @@
         )
     ))
 
-;; <s-kp-subtract> - make font smaller
+(global-set-key (kbd "<C-S-f3>") 'marks-center-screen) ; ctrl + ')'
+
+;; fixes the screen if it was messed up by my font switching stuff.
+(defun screen-rescue (arg)
+  (interactive "p")
+  (setq my-face-height 130)
+  (marks-center-screen nil)
+)
+
+;; ctrl + '=' - make font smaller
 (defun marks-make-font-smaller (arg)
   (interactive "p")
   (setq my-face-height (- my-face-height 10))
   (set-face-attribute 'default nil :height my-face-height)
   (marks-center-screen nil))
 
-;; <s-kp-add> - make font larger
+(global-set-key [?\C-=] 'marks-make-font-smaller)
+
+;; ctrl + '+' - make font larger
 (defun marks-make-font-larger (arg)
   (interactive "p")
   (setq my-face-height (+ my-face-height 10))
   (set-face-attribute 'default nil :height my-face-height)
   (marks-center-screen nil))
 
-;; <s-f1> - dark color theme
+(global-set-key [?\C-+] 'marks-make-font-larger) 
+
+;; Shift + Ctrl + f1 - dark color theme
 (defun marks-dark-theme (arg)
   (interactive "p")
-  (load-theme 'tango-dark))
+  (load-theme 'marks-dark-theme))
 
-;; <s-f2> - light color theme
+(global-set-key (kbd "<C-S-f1>") 'marks-dark-theme) 
+
+;; Shift + Ctrl + f2 - light color theme
 (defun marks-light-theme (arg)
   (interactive "p")
-  (load-theme 'tango))
+  (load-theme 'marks-light-theme))
+
+(global-set-key (kbd "<C-S-f2>") 'marks-light-theme) 
 
 ;; super+9 jump to matching paren or brace
 (defun goto-match-paren (arg)
@@ -202,12 +252,6 @@ vi style of % jumping to matching brace."
     (global-set-key (kbd "<home>") 'move-beginning-of-line)
     (global-set-key (kbd "<end>") 'move-end-of-line)
     (global-set-key (kbd "s-9") 'goto-match-paren)  ; super + 9 ['(' is a shift+9]
-    (global-set-key (kbd "<s-kp-subtract>") 'marks-make-font-smaller) ; super + keypad '-'
-    (global-set-key (kbd "<s-kp-add>") 'marks-make-font-larger) ; super + keypad '+'
-    (global-set-key (kbd "s-=")  'marks-make-font-smaller) ; super + '='
-    (global-set-key (kbd "s-+") 'marks-make-font-larger) ; super + '+'
-    (global-set-key (kbd "<s-f1>") 'marks-dark-theme) ; super + f1
-    (global-set-key (kbd "<s-f2>") 'marks-light-theme) ; super + f2
     (global-set-key (kbd "<C-next>") 'next-buffer) ; ctrl + pgDn
     (global-set-key (kbd "<C-prior>") 'previous-buffer) ; ctrl + pgUp
     (global-set-key (kbd "<C-M-next>") 'tabbar-forward-tab) ; ctrl + alt + pgDn
@@ -235,5 +279,8 @@ vi style of % jumping to matching brace."
 (menu-bar-mode t)
 (tabbar-mode t)
 (cua-mode t)
+(setq company-dabbrev-downcase nil)
+
+(require 'tabbar-tweak)
 
 (message "mark.el end")
