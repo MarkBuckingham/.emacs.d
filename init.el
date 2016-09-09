@@ -40,7 +40,7 @@
     color-theme-solarized
     company
     eieio
-    emacs-eclim
+    eclim
     enh-ruby-mode
     exec-path-from-shell
     flycheck
