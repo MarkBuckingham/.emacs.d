@@ -243,6 +243,7 @@ vi style of % jumping to matching brace."
       )
 
     ;; keybindings for everybody
+    (global-set-key (kbd "<S-s-down>") 'flyspell-correct-word-before-point) ; Super-shift-down
     (global-set-key (kbd "<s-next>") 'next-multiframe-window) ; Super-pgDn
     (global-set-key (kbd "<s-prior>") 'previous-multiframe-window) ; Super-pgUp
     (global-set-key (kbd "<M-next>") 'next-buffer) ; Alt-pgDn
@@ -258,6 +259,7 @@ vi style of % jumping to matching brace."
     (global-set-key (kbd "<C-M-prior>") 'tabbar-backward-tab) ; ctrl + alt + pgUp
    
 ;;    (color-theme-gnome2)
+	(marks-dark-theme 1)	
     )
  )
 
